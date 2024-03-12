@@ -1,0 +1,64 @@
+{% extends "base_generic.html" %}
+
+
+{% block content %}
+{% if user.is_authenticated %}
+<h1>Local Library Home</h1>
+
+<p>Welcome to <em>LocalLibrary</em>, a very basic Django website developed as a tutorial example on the Mozilla
+  Developer Network.</p>
+
+<h2>Dynamic content</h2>
+
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-{{message.tags}}">{{message}}</div>
+{% endfor %}
+{% endif %}
+
+
+
+<p>The library has the following record counts:</p>
+<ul>
+  <li><strong>Books:</strong> {{ num_books }}</li>
+  <li><strong>Copies:</strong> {{ num_instances }}</li>
+  <li><strong>Copies available:</strong> {{ num_instances_available }}</li>
+  <li><strong>Authors:</strong> {{ num_authors }}</li>
+
+
+</ul>
+<p>Has visitado la pagina {{ num_visits }}{% if num_visits == 1 %} vez{% else %} veces{% endif %} Deja ya de entrar.</p>
+
+<ul>
+  <li><strong>Libro1:</strong> {{ num_books }}</li>
+  <li><strong>Libro2:</strong> {{ num_instances }}</li>
+  <li><strong>Libro3:</strong> {{ num_instances_available }}</li>
+  {%for ele in books %}
+  <li><strong>Datos:</strong> {{ele}}</li>
+  {% endfor %}
+  <h3>Lista de libros con autores</h3>
+  <!-- Iteramos en lista de libros y mediante los metodos del objeto sacamos distintos valores y despues creamos 
+  un enlace que lleva a la detail view de los libros -->
+  {%for ele in books %}
+  <li><strong>Libro:</strong> {{ele.title}} <strong>Autor:</strong> {{ele.author}} <strong>URL:</strong><a
+      href="{% url 'probando' ele.id%}">{% url 'probando' ele.id%}</a> </li>
+  {% endfor %}
+  <h3>Lista libro con enlace a autor</h3>
+  <!-- Iteramos en lista de libros y mediante los metodos del objeto sacamos distintos valores y despues creamos 
+  un enlace que que esta dentro de los autores lleva a la detail view de los autores  -->
+  {%for ele in books %}
+  <li><a href="{% url 'autores' ele.author.pk %}"><strong>Libro:</strong> {{ele.title}} <strong>Autor:</strong>
+      {{ele.author.first_name}} </a> </li>
+
+  {% endfor %}
+
+
+</ul>
+
+
+{% else %}
+<h2>Tienes el acceso restringido, logeate para acceder al contenido</h2>
+<li><a href="{% url 'login' %}">Acceso</a></li>
+{% endif %}
+
+{% endblock %}

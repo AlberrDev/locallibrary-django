@@ -1,0 +1,39 @@
+{% extends "base_generic.html" %}
+{% block content %}
+
+<h1>Formulario Custom</h1>
+
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table>
+        
+        <p>Nombre</p>
+        {{form.nombre}}
+        <p>apellido</p>
+        {{form.apellido}}
+        <p>edad</p>
+        {{form.edad}}
+        <p>Mascota</p>
+        {{form.Mascota}}
+        <p>ocio</p>
+        {{form.ocio}}
+        <p>sexo</p>
+        {{form.sexo}}
+        <p>hora</p>
+        {{form.hora}}
+        <p>colores</p>
+        {{form.colores}}
+        <p>date</p>
+        {{form.date}}
+        <p>libro</p>
+        {{form.libro}}
+        <p>Imagen</p>
+        {{form.imagen}}
+        <p>Observacion</p>
+        {{form.Observacion}}
+        <br>
+    </table>
+    <input type="submit" value="Submit" />
+</form>
+
+{% endblock %}

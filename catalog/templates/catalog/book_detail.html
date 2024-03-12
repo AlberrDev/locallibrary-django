@@ -1,0 +1,38 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>Title: {{ book.title }}</h1>
+
+<a href="{% url 'author-detail' book.author.pk %}"><strong>{{ book.author }}</strong></a>
+<!-- enlace de detalle del autor aún no definido -->
+<p><strong>Resumen:</strong> {{ book.summary }}</p>
+<p><strong>ISBN:</strong> {{ book.isbn }}</p>
+<p><strong>Idioma:</strong> {{ book.language }}</p>
+<p><strong>Genero:</strong> {% for genre in book.genre.all %} {{ genre }}{% if not forloop.last %}, {% endif %}
+  {% endfor%}</p>
+<p><strong>Imagen</strong></p>
+<img src="{{ book.portada.url }}" alt="{{ book.title }} Cover">
+<h4>video</h4>
+<video controls>
+  <source src="{{book.video.url }}">
+</video>
+<h4>ficheros</h4>
+{{book.ficheros}}
+<div style="margin-left:20px;margin-top:20px">
+  <a href="{% url 'generarPDF' book.pk %}">Generar PDF</a>
+  <h4>Copias</h4>
+  {% if book.ficheros.url %}
+  <iframe id="iframe_pdf" src="{{ book.ficheros.url }}" style="width:800px; height:800px;" frameborder="0"></iframe>
+  {%endif %}
+  {% for copy in book.bookinstance_set.all %}
+  <hr>
+  <p
+    class="{% if copy.status == 'a' %}text-success{% elif copy.status == 'm' %}text-danger{% else %}text-warning{% endif %}">
+    {{ copy.get_status_display }}</p>
+  {% if copy.status != 'a' %}<p><strong>Pendiente de devolución:</strong> {{copy.due_back}}</p>{% endif %}
+  <p><strong>Imprimir:</strong> {{copy.imprint}}</p>
+  <p class="text-muted"><strong>Id:</strong> {{copy.id}}</p>
+  {% endfor %}
+
+</div>
+{% endblock %}

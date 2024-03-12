@@ -1,0 +1,39 @@
+{% extends "base_generic.html" %}
+{% block content %}
+
+<h1>Formulario Mensajes</h1>
+
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table>
+        {% for field in form %}
+        <p>{{field.label}}{{field}}</p>
+        {% if field.errors %}
+        {% for error in field.errors %}
+        <p class="text-danger">El campo {{field}} es incorrecto</p>
+        {% endfor %}
+        {% endif %}
+        {% endfor %}
+
+
+    </table>
+    {% if users %}
+
+    {% for ele in users %}
+    <ul>
+        <li>{{ele}} {{ele.email}}
+            {% if 'catalog.recibir_mensajes' in ele.get_all_permissions %}
+            <a href="{% url 'gestion_mensaje' ele.pk %}">Mandar Mensajes</a> 
+            {% endif %}
+        </li>
+    </ul>
+    {% endfor %}
+    {% endif %}
+    <br>
+    <input type="submit" value="Submit" name="generar_perfil" />
+
+
+
+</form>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+{% if mensajes_list %}
+<ul>
+
+    {% for mensajes in mensajes_list %}
+    <h1>Mensaje de {{mensajes.user}}</h1>
+    <li> User:{{ mensajes.user }} </li>
+    <li> Nombre:({{mensajes.nombre}})</li>
+    <li> Destinatario:({{mensajes.destinatario}})</li>
+    <li> Cuerpo:({{mensajes.cuerpo_mensaje}})</li>
+    <li> Fecha_Envio:({{mensajes.fecha_envio}}) </li>
+
+
+    {% endfor %}
+
+
+</ul>
+{% else %}
+<p>No Mensajes Papi.</p>
+{% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,13 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: Password reset on 127.0.0.1:8000
+From: webmaster@localhost
+To: 9650491@alu.murciaeduca.es
+Date: Tue, 23 Jan 2024 12:11:03 -0000
+Message-ID: <170601186329.24727.9827072668505720820@alber-pc>
+
+Alguien solicitó restablecer la contraseña del correo electrónico 9650491@alu.murciaeduca.es. Vaya el siguiente enlace:
+http://127.0.0.1:8000/accounts/reset/MQ/c19baf-a65d8160f6a9626a970dd7cb70dbfc67/
+
+-------------------------------------------------------------------------------

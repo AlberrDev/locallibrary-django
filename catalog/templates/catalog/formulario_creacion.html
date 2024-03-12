@@ -1,0 +1,26 @@
+{% extends "base_generic.html" %}
+{% block content %}
+
+<h1>Formulario Examen</h1>
+
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table>
+        {% for field in form %}
+        <p>{{field.label}}{{field}}</p>
+        {% if field.errors %}
+        {% for error in field.errors %}
+        <p class="text-danger">El campo {{field}} es incorrecto</p>
+        {% endfor %}
+        {% endif %}
+        {% endfor %}
+
+    
+    </table>
+    <input type="submit" value="Submit" name="generar_perfil" />
+   
+
+
+</form>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>Lista de Autores</h1>
+
+         
+
+{% if author_list %}
+<ul>
+
+    {% for author in author_list %}
+    <li>
+        <a href="{{ author.get_absolute_url }}">{{ author.first_name }}</a> ({{author.last_name}}) 
+        {% if perms.catalog.can_mark_returned %}
+
+   
+        <button><a href="{% url 'author-create'  %}">Crear Autor</a></button>
+        <button><a href="{% url 'author-update' author.id %}">Update Autor</a></button>
+        <button><a href="{% url 'author-delete' author.id %}">Delete Autor</a></button>
+        {% endif %}
+
+    </li>
+    {% endfor %}
+
+</ul>
+{% else %}
+<p>No hay autores en la biblio.</p>
+{% endif %}
+{% endblock %}

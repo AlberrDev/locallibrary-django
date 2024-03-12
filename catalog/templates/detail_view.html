@@ -1,0 +1,23 @@
+{% extends "base_generic.html" %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail View</title>
+</head>
+{% block content %}
+<body>
+    <h1>Libro</h1>
+    <p>Titulo:{{book.title}}</p>
+    <p>Autor:{{book.author}}</p>
+    <p>Summary:{{book.summary}}</p>
+    <p>ISBN:{{book.isbn}}</p>
+    <p>Genero:{{book.display_genre}}</p>
+    
+
+</body>
+{% endblock %}
+
+</html>

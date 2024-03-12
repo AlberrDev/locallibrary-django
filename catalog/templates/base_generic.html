@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  {% block title %}<title>Local Library</title>{% endblock %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  {% load static %}
+
+
+  <!-- Add additional CSS in static file -->
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-sm-2">
+        {% block sidebar %}
+        <ul class="sidebar-nav">
+          <li><a href="{% url 'index' %}">Home</a></li>
+          <li><a href="">All books</a></li>
+          <li><a href="">All authors</a></li>
+          <li><a href="{% url 'books' %}">ListView Books</a></li>
+          <li><a href="{% url 'author' %}">ListView Autores</a></li>
+          <li><a href="{% url 'calculator' %}">Calculator</a></li>
+          <li><a href="{% url 'formu' %}">Formulario</a></li>
+          <li><a href="{% url 'formuExamen' %}">FormularioExamen</a></li>
+          {% if perms.catalog.permiso1 %}
+          <li><a href="{% url 'register' %}">Creacion de User</a></li>
+          {% endif %}
+          {% if perms.catalog.permiso2 %}
+          <li><a href="{% url 'crear-perfil' %}">Creacion Perfil Usuario</a></li>
+          {% endif %}
+          {% if perms.catalog.mandar_mensajes %}
+          <li><a href="{% url 'crear-mensaje' %}">Mandar Mensajes</a></li>
+          {% endif %}
+          {% if perms.catalog.recibir_mensajes %}
+          <li><a href="{% url 'mensajes_list' %}">Bandeja Entrada</a></li>
+          {% endif %}
+          {% if perms.catalog.permiso3 %}
+          <li><a href="{% url 'administrar_mensajes' %}">Administrar Mensajes</a></li>
+          {% endif %}
+         
+
+
+
+          <hr>
+          <h1>Login</h1>
+
+          {% if user.is_authenticated %}
+          <li>Usuario:{{user.get_username}}</li>
+          <li><a href="{% url 'logout' %}?next={% url 'index' %}">Cerrar Sesion</a></li>
+          <li><a href="{% url 'my-borrowed' %}">Mis libros</a></li>
+
+          {% else %}
+          <li><a href="{% url 'login' %}">Acceso</a></li>
+          {% endif %}
+
+          {% if perms.catalog.can_mark_returned %}
+          <h1>STAFF</h1>
+          <li><a href="{% url 'prestado' %}">Gestion Libros Prestados</a></li>
+          {% endif %}
+
+        </ul>
+        {% endblock %}
+
+      </div>
+      <div class="col-sm-10 ">
+        {% block content %}{% endblock %}
+
+        {% block pagination %}
+        {% if is_paginated %}
+        <div class="pagination">
+          <span class="page-links">
+            {% if page_obj.has_previous %}
+            <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">anterior</a>
+            {% endif %}
+            <span class="page-current">
+              Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+            {% if page_obj.has_next %}
+            <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">siguiente</a>
+            {% endif %}
+          </span>
+        </div>
+        {% endif %}
+        {% endblock %}
+      </div>
+      <img src="{% static 'img/descarga.jpeg' %}" alt="My image" style="width:100px;height:100px;" />
+    </div>
+
+  </div>
+
+
+</body>
+
+</html>

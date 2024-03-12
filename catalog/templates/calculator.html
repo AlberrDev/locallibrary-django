@@ -1,0 +1,33 @@
+{% extends "base_generic.html" %}
+{% block content %}
+
+<h1>Calculator</h1>
+<h2>Numero</h2>
+<ul>
+    <li><a href="{% url 'calculator' 0  %}">0</a></li>
+    <li><a href="{% url 'calculator' 1  %}">1</a></li>
+    <li><a href="{% url 'calculator' 2 %}">2</a></li>
+    <li><a href="{% url 'calculator' 3 %}">3</a></li>
+    <li><a href="{% url 'calculator' 4 %}">4</a></li>
+    <li><a href="{% url 'calculator' 5 %}">5</a></li>
+    <li><a href="{% url 'calculator' 6 %}">6</a></li>
+    <li><a href="{% url 'calculator' 7 %}">7</a></li>
+    <li><a href="{% url 'calculator' 8 %}">8</a></li>
+    <li><a href="{% url 'calculator' 9 %}">9</a></li>
+
+</ul>
+<h2>Operador</h2>
+<ul>
+    <li><a href="{% url 'calculator' 'suma' %}">+</a></li>
+    <li><a href="{% url 'calculator' 'restar' %}">-</a></li>
+    <li><a href="{% url 'calculator' 'multi' %}">*</a></li>
+    <li><a href="{% url 'calculator' 'div' %}">/</a></li>
+    <li><a href="{% url 'calculator' 'igual' %}">=</a></li>
+    <li><a href="{% url 'calculator' 'borrar' %}">C</a></li>
+</ul>
+<h2>Mensaje:{{resultado}}</h2>
+<h2>Formula:{{lista_num}}</h2>
+
+
+{% endblock %}
+

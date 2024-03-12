@@ -1,0 +1,25 @@
+{% block content %}
+<form action="" enctype="multipart/form-data">
+    <h1>Registro Creado</h1>
+    <h4>Titulo : {{book.title}}</h4>
+    <br>
+    <h4>Author: {{book.author}}</h4>
+    <br>
+    <h4>Summary:{{book.summary}}</h4>
+    <p>Genero:{{book.display_genre}}</p>
+
+    <h4>Portada</h4>
+    <img src="{{ book.portada.url }}" alt="{{ book.title }} Cover">
+
+    <h4>video</h4>
+    <video controls>
+        <source src="{{book.video.url }}">
+    </video>
+    <p>{{ book.video.url }}</p>
+    <h4>ficheros</h4>
+    {{book.ficheros}}
+</form>
+
+
+
+{% endblock %}

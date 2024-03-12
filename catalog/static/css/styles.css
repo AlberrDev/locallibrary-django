@@ -1,0 +1,47 @@
+table,tr,td{
+    border: solid black 1px;
+    border-collapse: collapse;
+    width: 300px;
+    height: 150px;
+    text-align: center;
+}
+
+.loginTable{
+    width: 350px;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.loginTr {
+    margin-top: 10px;
+}
+tr{
+    background-color: pink;
+}
+
+body{
+    background-color: antiquewhite;
+}
+hr{
+    border: solid 1px black;
+    width: 100%;
+}
+
+form{
+    border: solid black 2px;
+    width: 70%;
+    background-color: pink;
+    
+}
+label,input,p,select,textarea{
+    margin-left: 30px;
+}
+
+
+body{
+    background-color: antiquewhite;
+}
+hr{
+    border: solid 1px black;
+    width: 100%;
+}

@@ -1,0 +1,23 @@
+{% extends "base_generic.html" %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail View</title>
+</head>
+{% block content %}
+<body>
+    <h1>Autores</h1>
+    <p>Ultimo Nombre: {{author.last_name}}</p>
+    <p>Primer nombre: {{author.first_name}}</p>
+    <p>Fecha Nacimiento: {{author.date_of_birth}}</p>
+    <p>Fecha de muerte: {{author.date_of_death}}</p>
+   
+    
+
+</body>
+{% endblock %}
+
+</html>
