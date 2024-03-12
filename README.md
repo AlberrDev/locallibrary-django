@@ -2,6 +2,10 @@
 
 This repository contains the source code for the Local Library project, a Django-based web application developed as a learning project for Python and Django. The project implements various functionalities covered in the MDN Django tutorial and extends them with additional features.
 
+### 🚀 Web Technologies
+[![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=3776AB&labelColor=101010)]()
+[![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=092E20&labelColor=101010)](https://www.djangoproject.com/)
+
 ## Features
 
 1. **MDN Tutorial Functionalities**: The project implements the functionalities covered in the MDN Django tutorial, including:
